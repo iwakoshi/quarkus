@@ -40,10 +40,10 @@
         <microprofile-lra.version>1.0</microprofile-lra.version>
         <smallrye-common.version>1.10.0</smallrye-common.version>
         <smallrye-config.version>2.9.2</smallrye-config.version>
-        <smallrye-health.version>3.2.0</smallrye-health.version>
+        <smallrye-health.version>3.2.1</smallrye-health.version>
         <smallrye-metrics.version>3.0.4</smallrye-metrics.version>
         <smallrye-open-api.version>2.1.22</smallrye-open-api.version>
-        <smallrye-graphql.version>1.4.3</smallrye-graphql.version>
+        <smallrye-graphql.version>1.4.4</smallrye-graphql.version>
         <smallrye-opentracing.version>2.1.0</smallrye-opentracing.version>
         <smallrye-fault-tolerance.version>5.3.1</smallrye-fault-tolerance.version>
         <smallrye-jwt.version>3.3.3</smallrye-jwt.version>
@@ -95,7 +95,7 @@
         <jboss-transaction-api_1.2_spec.version>1.1.1.Final</jboss-transaction-api_1.2_spec.version>
         <agroal.version>1.15</agroal.version>
         <jboss-transaction-spi.version>7.6.0.Final</jboss-transaction-spi.version>
-        <elasticsearch-opensource-components.version>8.1.0</elasticsearch-opensource-components.version>
+        <elasticsearch-opensource-components.version>8.1.1</elasticsearch-opensource-components.version>
         <!-- for the now proprietary components of Elasticsearch, we use the last Open Source version -->
         <elasticsearch-proprietary-components-keeping-old-opensource-version.version>7.10.2</elasticsearch-proprietary-components-keeping-old-opensource-version.version>
         <rxjava.version>2.2.21</rxjava.version>
@@ -107,13 +107,7 @@
         <wildfly-client-config.version>1.0.1.Final</wildfly-client-config.version>
         <wildfly-elytron.version>1.19.0.Final</wildfly-elytron.version>
         <jboss-threads.version>3.4.2.Final</jboss-threads.version>
-        <vertx.version>4.2.5</vertx.version>
-        <!--
-        Temporary fix, the client 4.2.5 does not work in the context of Quarkus (bug in the client)
-        The fix is shipped with this path release.
-        This property needs to be removed when we will update to Vert.x 4.2.6 or Vert.x 4.3.0
-        -->
-        <vertx.oracle-client.version>4.2.5.1</vertx.oracle-client.version>
+        <vertx.version>4.2.6</vertx.version>
         <httpclient.version>4.5.13</httpclient.version>
         <httpcore.version>4.4.15</httpcore.version>
         <httpasync.version>4.1.5</httpasync.version>
@@ -182,7 +176,7 @@
         <checker-qual.version>3.21.3</checker-qual.version>
         <error-prone-annotations.version>2.11.0</error-prone-annotations.version>
         <jib-core.version>0.20.0</jib-core.version>
-        <google-http-client.version>1.41.4</google-http-client.version>
+        <google-http-client.version>1.41.5</google-http-client.version>
         <scram-client.version>2.1</scram-client.version>
         <picocli.version>4.6.3</picocli.version>
         <google-cloud-functions.version>1.0.4</google-cloud-functions.version>
@@ -286,13 +280,6 @@
                 <version>${vertx.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
-            </dependency>
-            <dependency>
-                <!-- Temporarily override the version of the Oracle client, as a bug prevents the usage of the 4.2.5
-                version in Quarkus, instead, use 4.2.5.1. -->
-                <groupId>io.vertx</groupId>
-                <artifactId>vertx-oracle-client</artifactId>
-                <version>${vertx.oracle-client.version}</version>
             </dependency>
 
             <!-- gRPC dependencies, imported as a BOM -->
@@ -2509,6 +2496,16 @@
             </dependency>
             <dependency>
                 <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-security-webauthn</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-security-webauthn-deployment</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-elytron-security-ldap</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -2652,6 +2649,11 @@
             <dependency>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-test-security-oidc</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-test-security-webauthn</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
